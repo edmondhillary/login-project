@@ -5,5 +5,5 @@ import { isSuperAdmin } from '../auth/auth.controller.js';
 const router = express.Router();
 router.get('/', userController.getAllUsers )
 router.put('/:id', userController.updateUser)
-router.delete('/:id', userController.deleteUser)
+router.delete('/:id',isSuperAdmin, userController.deleteUser)
 export default router

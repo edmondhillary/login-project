@@ -42,13 +42,14 @@ async function login({ email, password }) {
   return token;
 }
 
-async function register({ email, password, firstName, lastName }) {
+async function register({ email, password, firstName, lastName,role }) {
   const hashedPassword = hashSync(password, 10);
   const dbUser = await userRepository.insert({
     email,
     password: hashedPassword,
     firstName,
     lastName,
+    role
   });
   if (!dbUser) {
     throw new Error("Some problem at insert");

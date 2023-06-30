@@ -29,7 +29,7 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-  const { email, password, firstName, lastName } = req.body;
+  const { email, password, firstName, lastName, role} = req.body;
   let token;
 
   if (!email || !password) {
@@ -39,7 +39,7 @@ async function register(req, res) {
   }
 
   try {
-    token = await authBll.register({ email, password, firstName, lastName });
+    token = await authBll.register({ email, password, firstName, lastName ,role});
   } catch (err) {
     console.log(err);
     res.status(500);
@@ -85,7 +85,7 @@ export function isSuperAdmin(request, response, next) {
       return unauthorized(response);
     }
 
-    request.username = payload.username;
+    request.email = payload.email;
     request.userId = payload.userId;
     request.role = payload.role;
 

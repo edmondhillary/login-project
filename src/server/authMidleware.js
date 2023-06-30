@@ -29,7 +29,7 @@ function middleware(request, response, next) {
       return unauthorized(response);
     }
 
-    request.username = payload.username;
+    request.email = payload.email;
     request.userId = payload.userId;
 
     next();

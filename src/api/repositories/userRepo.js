@@ -2,8 +2,8 @@ import userModel from "../models/userSchema.js";
 import { Types } from "mongoose";
 const { ObjectId } = Types;
 
-async function insert({ email, password, firstName, lastName }) {
-  const user = await userModel.create({ email, password, firstName, lastName });
+async function insert({ email, password, firstName, lastName, role }) {
+  const user = await userModel.create({ email, password, firstName, lastName, role });
   return user;
 }
 
